@@ -21,7 +21,22 @@ class TasksController < ApplicationController
     def show
        
     end 
+    def edit 
     
+    end 
+    
+    def update 
+        if @task.update(task_params)
+            redirect_to task_path(@task)
+        else
+            render 'edit'
+        end
+    end 
+    
+    def destroy 
+        @taks.destroy
+        redirect_to root_path
+    end 
     
     
     
