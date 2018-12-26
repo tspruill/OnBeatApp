@@ -10,6 +10,29 @@
   </head>
 
   <body>
+      <nav class ="navbar navbar-defualt">
+          <div class="container">
+              <div class="navbar-header">
+                  <%= link_to "OnBeat", tasks_path, class: "navbar-brand" %>
+              </div>
+              <ul class="nav navbar-nav navbar-right">
+                  <% if current_user.present? %>
+                  <li><%= link_to "Sign out",  destroy_user_session_path, method: :delete %></li>
+                  <% else %>
+                  <%=link_to "Log In", new_user_session_path%>
+                   <%=link_to "Sign Up", new_user_registration_path%>
+                  <% end  %>
+              </ul>
+              <% if user_signed_in?%>
+              <%= link_to "Create New Taks", new_task_path, class: "navbar-text navbar-link"%>
+              <%end%>
+          </div>
+      </nav>
+       <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+
+<div class="container">
     <%= yield %>
+          </div>
   </body>
 </html>
